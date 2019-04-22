@@ -8,7 +8,7 @@ public_folder: /img
 collections:
   - name: 'price_list'
     label: 'Price Lists'
-    folder: 'src/pages/price_lists'
+    folder: 'src/pages/price-list'
     label_singular: 'Price List'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
@@ -18,7 +18,7 @@ collections:
           label: 'Template Key',
           name: 'templateKey',
           widget: 'hidden',
-          default: 'price_list',
+          default: 'price-list',
         }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
