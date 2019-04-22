@@ -1,9 +1,5 @@
 ---
 templateKey: class-entry
 title: Gentle Flow
-date: 2019-02-05T01:15:22.031Z
-description: Description text
-tags:
-  - yoga
 ---
-Body text
+A slower yoga flow class with more emphasis on stretching and holding poses for a longer period of time. A level 1 class, (with level 2 options provides) it is perfect for all levels of experience and fitness, and a great way to build strength and flexibility.
