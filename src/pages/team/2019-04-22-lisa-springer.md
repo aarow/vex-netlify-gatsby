@@ -2,6 +2,7 @@
 templateKey: team-member
 name: Lisa Springer
 title: Certified Yoga Instructor
+image: /img/lisa-crop.jpg
 ---
 Hi, my name is Lisa, I am a 200 hour certified yoga instructor. I am a registered nurse who specializes in mental health, pain, and women and infants. I love to help ease pain, anxiety and depression though reiki, gentle yoga and breathwork.
 
