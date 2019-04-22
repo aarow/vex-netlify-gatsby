@@ -30,7 +30,7 @@ collections:
             [
               { label: 'Product Title', name: product_title, widget: string },
               { label: Description, name: description, widget: markdown },
-              { label: Price, name: price, widget: text },
+              { label: Price, name: price, widget: string },
               { label: Unit, name: unit, widget: string },
               { label: Link, name: link, widget: string },
               { label: 'Link Title', name: link_title, widget: string },
