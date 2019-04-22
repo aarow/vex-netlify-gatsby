@@ -6,6 +6,53 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: 'price_list'
+    label: 'Price Lists'
+    folder: 'src/pages/price-lists'
+    label_singular: 'Price List'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    identifier_field: title
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'price_lists',
+        }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - {
+          label: Prices,
+          name: prices,
+          widget: list,
+          fields:
+            [
+              { label: 'Product Title', name: product_title, widget: string },
+              { label: Description, name: description, widget: markdown },
+              { label: Price, name: price, widget: text },
+              { label: Unit, name: unit, widget: string },
+              { label: Link, name: link, widget: string },
+              { label: 'Link Title', name: link_title, widget: string },
+            ],
+        }
+  - name: 'promotions'
+    label: 'Promotions'
+    folder: 'src/pages/promotion'
+    label_singular: 'Promotion'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    identifier_field: title
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'promotion',
+        }
+      - { label: 'Promotion Name', name: promotion_name, widget: string }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'team'
     label: 'Team'
     folder: 'src/pages/team'
