@@ -1,5 +1,5 @@
 ---
-templateKey: price_lists
+templateKey: price-list
 title: Single Class Packages
 prices:
   - description: Any class offered
@@ -9,4 +9,5 @@ prices:
     product_title: Single Class
     unit: class
 ---
+
 (no expiration)

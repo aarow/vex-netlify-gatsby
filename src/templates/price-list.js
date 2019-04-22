@@ -31,7 +31,7 @@ PriceListPageTemplate.propTypes = {
   contentComponent: PropTypes.func
 };
 
-const TeamPage = ({ data }) => {
+const PriceListPage = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (

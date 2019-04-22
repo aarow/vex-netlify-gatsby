@@ -1,5 +1,5 @@
 ---
-templateKey: price_lists
+templateKey: price-list
 title: Monthly Membership Options
 prices:
   - description: |-
@@ -19,4 +19,5 @@ prices:
     product_title: 12 Classes
     unit: month
 ---
+
 Monthly Membership Options
