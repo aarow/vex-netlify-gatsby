@@ -1,0 +1,84 @@
+@import '~bulma/sass/utilities/initial-variables';
+
+/*
+functions
+*/
+
+@function pixToRem($pixels) {
+  @return $pixels / $body-size * 1rem;
+}
+
+@function blockSize($width, $height) {
+  @return include widthHeight($width, $height);
+}
+
+/*
+Mixins
+*/
+
+@mixin size($width, $height) {
+  @if ($width == 'auto' or unit($width) == '%') {
+    width: $width;
+  } @else {
+    width: pixToRem($width);
+  }
+
+  @if ($height == 'auto' or unit($height) == '%') {
+    height: $height;
+  } @else {
+    height: pixToRem($height);
+  }
+}
+
+/*
+Custom colors for Troop 2119
+*/
+
+$blue-100: #8bd5f1;
+$blue-200: darken($blue-100, 45%);
+$blue-300: #0070c5;
+$blue-400: #004b84;
+$gold: #a6874e;
+$red: #db2327;
+
+/*
+Bulma Variables
+*/
+
+$navbar-box-shadow-color: #000000;
+$navbar-background-color: $blue-400;
+$navbar-item-color: $blue-100;
+$navbar-height: 4.5rem;
+
+/*
+Imports
+*/
+
+@import '~bulma';
+
+/*
+Site Navigation
+*/
+
+.navbar {
+  border-bottom: 0.5rem solid $red;
+}
+
+.navbar-brand {
+  position: relative;
+}
+
+.navbar-brand--link {
+  display: block;
+  padding: 0;
+  position: relative;
+  @include size(100px, auto);
+}
+
+.navbar-brand--link .navbar-brand--logo {
+  max-height: none;
+  width: 100%;
+  position: absolute;
+  top: pixToRem(4px);
+  left: pixToRem(4px);
+}
