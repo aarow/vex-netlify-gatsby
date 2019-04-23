@@ -69,8 +69,8 @@ collections:
         }
       - { label: 'Name', name: 'name', widget: 'string' }
       - {
-          label: 'Title',
-          name: 'title',
+          label: 'Job Title',
+          name: 'job-title',
           widget: 'string',
           default: 'Certified Yoga Instructor',
         }
