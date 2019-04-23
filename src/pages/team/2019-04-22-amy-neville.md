@@ -1,7 +1,7 @@
 ---
 templateKey: team-member
 name: Amy Neville
-title: Owner and Certified Yoga Instructor
+job-title: Owner and Certified Yoga Instructor
 image: /img/amy.jpg
 email: amy@vexyoga.com
 ---
