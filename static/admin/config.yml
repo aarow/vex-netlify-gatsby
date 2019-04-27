@@ -59,7 +59,6 @@ collections:
     label_singular: 'Team Member'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    identifier_field: name
     fields:
       - {
           label: 'Template Key',
@@ -67,10 +66,10 @@ collections:
           widget: 'hidden',
           default: 'team-member',
         }
-      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Name', name: 'title', widget: 'string' }
       - {
           label: 'Job Title',
-          name: 'job-title',
+          name: 'job_title',
           widget: 'string',
           default: 'Certified Yoga Instructor',
         }

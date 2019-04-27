@@ -1,8 +1,25 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import logo from '../img/logo.svg';
+// import { Link } from 'gatsby';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap';
+import Logo from './Logo';
 
-const Navbar = class extends React.Component {
+const SiteNavbar = class extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
   componentDidMount() {
     // Get all "navbar-burger" elements
     const $navbarBurgers = Array.prototype.slice.call(
@@ -26,55 +43,78 @@ const Navbar = class extends React.Component {
     }
   }
 
-  logoStyle = {
-    maxHeight: 'none',
-    width: '100%'
-  };
-
-  brandStyle = {
-    width: '62px',
-    height: 'auto',
-    padding: '0',
-    position: 'absolute',
-    top: '0.4rem'
-  };
-
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     return (
       <>
-        <nav
-          className='navbar is-fixed-top'
-          role='navigation'
-          aria-label='main-navigation'>
-          <div className='container'>
-            <div className='navbar-brand'>
-              {/* Hamburger menu */}
-              <div className='navbar-burger burger' data-target='navMenu'>
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
-            <div id='navMenu' className='navbar-menu'>
-              <div className='navbar-start has-text-centered' />
-              <Link className='navbar-item' to='/about'>
-                About
-              </Link>
-              <Link className='navbar-item' to='/classes'>
-                Classes
-              </Link>
-              <Link className='navbar-item' to='/contact'>
-                Contact
-              </Link>
-            </div>
-          </div>
-        </nav>
-        <Link to='/' className='navbar-item navbar-brand--link ' title='Logo'>
-          <img src={logo} alt='Troop 2119' className='navbar-brand--logo' />
-        </Link>
+        <Navbar color='light' light expand='md' className='bg-white'>
+          <NavbarBrand href='/'>
+            <Logo className='site-logo' />
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className='ml-auto text-uppercase' navbar>
+              <NavItem>
+                <NavLink href='/components/'>Components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href='https://github.com/reactstrap/reactstrap'>
+                  GitHub
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </>
     );
   }
+  // render() {
+  //   return (
+  //     <>
+  //       <nav
+  //         className='navbar is-fixed-top'
+  //         role='navigation'
+  //         aria-label='main-navigation'>
+  //         <div className='container'>
+  //           <div className='navbar-brand'>
+  //             <Link
+  //               to='/'
+  //               className='navbar-item navbar-brand--link '
+  //               title='Vex Yoga &amp; Fitness'>
+  //               <img
+  //                 src={logo}
+  //                 alt='Vex Yoga &amp; Fitness'
+  //                 className='navbar-brand--logo'
+  //               />
+  //             </Link>
+  //             {/* Hamburger menu */}
+  //             <div className='navbar-burger burger' data-target='navMenu'>
+  //               <span />
+  //               <span />
+  //               <span />
+  //             </div>
+  //           </div>
+  //           <div id='navMenu' className='navbar-menu'>
+  //             <div className='navbar-start has-text-centered' />
+  //             <Link className='navbar-item' to='/about'>
+  //               About
+  //             </Link>
+  //             <Link className='navbar-item' to='/classes'>
+  //               Classes
+  //             </Link>
+  //             <Link className='navbar-item' to='/contact'>
+  //               Contact
+  //             </Link>
+  //           </div>
+  //         </div>
+  //       </nav>
+  //     </>
+  //   );
+  // }
 };
 
-export default Navbar;
+export default SiteNavbar;

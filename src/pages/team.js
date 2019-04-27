@@ -6,7 +6,6 @@ import Layout from '../components/Layout';
 export default class TeamPage extends React.Component {
   render() {
     const { data } = this.props;
-    console.log(this.props);
     const { edges: posts } = data.allMarkdownRemark;
 
     return (
@@ -29,6 +28,7 @@ export default class TeamPage extends React.Component {
                     <span> &bull; </span>
                     <small>{post.frontmatter.date}</small>
                   </p>
+                  <p> {post.frontmatter.job_title}</p>
                   <p>
                     {post.excerpt}
                     <br />
@@ -71,7 +71,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             templateKey
-            date(formatString: "MMMM DD, YYYY")
+            job_title
           }
         }
       }
