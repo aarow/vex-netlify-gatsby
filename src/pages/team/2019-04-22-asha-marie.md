@@ -1,6 +1,6 @@
 ---
 templateKey: team-member
-title: Certified Yoga Instructor
+title: Asha
 job_title: Certified Yoga Instructor
 image: /img/image1.jpeg
 ---
