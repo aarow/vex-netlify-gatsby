@@ -73,6 +73,10 @@ export const pageQuery = graphql`
             title
             job_title
             email
+            image {
+              id
+              publicURL
+            }
           }
         }
       }

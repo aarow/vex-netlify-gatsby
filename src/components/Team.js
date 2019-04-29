@@ -16,10 +16,19 @@ const Team = ({ teamList }) => (
 );
 
 const TeamMember = ({ teamMember }) => {
-  const { frontmatter, html } = teamMember;
+  const { frontmatter, html, image, email } = teamMember;
   return (
     <>
+      {frontmatter.image.publicURL && (
+        <img src={frontmatter.image.publicURL} className='w-100' />
+      )}
       <h2 className='text-center'>{frontmatter.title}</h2>
+      {frontmatter.email && (
+        <p>
+          <a href={frontmatter.email}>{frontmatter.email}</a>
+        </p>
+      )}
+
       <HTMLContent content={html} />
     </>
   );

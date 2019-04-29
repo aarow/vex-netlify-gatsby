@@ -36,7 +36,7 @@ const PromotionPage = ({ data }) => {
 
   return (
     <Layout>
-      <PromotionageTemplate
+      <PromotionPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
