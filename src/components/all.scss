@@ -47,10 +47,6 @@ functions
   @return $pixels / $body-size * 1rem;
 }
 
-@function blockSize($width, $height) {
-  @return include size($width, $height);
-}
-
 /*
 Mixins
 */
@@ -74,10 +70,22 @@ Imports
 */
 @import '~bootstrap/scss/bootstrap';
 
+/*
+Global
+*/
+
 body {
   font: 1rem/1.5 var(--font-family-serif);
 }
 
+.bg-full {
+  background-size: cover;
+  background-position: center;
+}
+
+/*
+Site Navigation
+*/
 .site-logo {
   height: 3rem;
 
@@ -93,5 +101,10 @@ body {
   }
 }
 /*
-Site Navigation
+Personnel 
 */
+
+.avatar--circle {
+  @include size(4rem, 4rem);
+  border-radius: 2rem;
+}

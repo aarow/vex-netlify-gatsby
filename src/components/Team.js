@@ -7,7 +7,6 @@ const Team = ({ teamList }) => (
     <ul className='list-unstyled row'>
       {teamList.map(({ node: teamMember }) => (
         <li key={teamMember.id} className='col-lg-4 col-sm-6 '>
-          {console.log(teamMember)}
           <TeamMember teamMember={teamMember} />
         </li>
       ))}
@@ -16,11 +15,14 @@ const Team = ({ teamList }) => (
 );
 
 const TeamMember = ({ teamMember }) => {
-  const { frontmatter, html, image, email } = teamMember;
+  const { frontmatter, html } = teamMember;
   return (
     <>
       {frontmatter.image.publicURL && (
-        <img src={frontmatter.image.publicURL} className='w-100' />
+        <div
+          className='avatar--circle bg-full'
+          style={{ backgroundImage: `url("${frontmatter.image.publicURL}")` }}
+        />
       )}
       <h2 className='text-center'>{frontmatter.title}</h2>
       {frontmatter.email && (
