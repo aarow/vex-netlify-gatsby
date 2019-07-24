@@ -6,135 +6,135 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'price-list'
-    label: 'Price Lists'
-    folder: 'src/pages/price-lists'
-    label_singular: 'Price List'
+  - name: "price-list"
+    label: "Price Lists"
+    folder: "src/pages/price-lists"
+    label_singular: "Price List"
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     identifier_field: title
     fields:
       - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'price-list',
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "price-list",
         }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
       - {
           label: Prices,
           name: prices,
           widget: list,
           fields:
             [
-              { label: 'Product Title', name: product_title, widget: string },
+              { label: "Product Title", name: product_title, widget: string },
               { label: Description, name: description, widget: markdown },
               { label: Price, name: price, widget: string },
               { label: Unit, name: unit, widget: string },
               { label: Link, name: link, widget: string },
-              { label: 'Link Title', name: link_title, widget: string },
+              { label: "Link Title", name: link_title, widget: string },
             ],
         }
-  - name: 'promotions'
-    label: 'Promotions'
-    folder: 'src/pages/promotion'
-    label_singular: 'Promotion'
+  - name: "promotions"
+    label: "Promotions"
+    folder: "src/pages/promotion"
+    label_singular: "Promotion"
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     identifier_field: title
     fields:
       - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'promotion',
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "promotion",
         }
-      - { label: 'Promotion Name', name: promotion_name, widget: string }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: 'team'
-    label: 'Team'
-    folder: 'src/pages/team'
-    label_singular: 'Team Member'
+      - { label: "Promotion Name", name: promotion_name, widget: string }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "team"
+    label: "Team"
+    folder: "src/pages/team"
+    label_singular: "Team Member"
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'team-member',
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "team-member",
         }
-      - { label: 'Name', name: 'title', widget: 'string' }
+      - { label: "Name", name: "title", widget: "string" }
       - {
-          label: 'Job Title',
-          name: 'job_title',
-          widget: 'string',
-          default: 'Certified Yoga Instructor',
+          label: "Job Title",
+          name: "job_title",
+          widget: "string",
+          default: "Certified Yoga Instructor",
         }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Portrait', name: 'image', widget: 'image', required: false }
-      - { label: 'Email', name: 'email', widget: 'string', required: false }
-  - name: 'classes'
-    label: 'Classes'
-    folder: 'src/pages/classes'
-    label_singular: 'Class'
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Portrait", name: "image", widget: "image", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+  - name: "classes"
+    label: "Classes"
+    folder: "src/pages/classes"
+    label_singular: "Class"
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'class-entry',
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "class-entry",
         }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'src/pages/blog'
+  - name: "blog"
+    label: "Blog"
+    folder: "src/pages/blog"
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'blog-post',
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "blog-post",
         }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'text' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Tags', name: 'tags', widget: 'list' }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }
 
-  - name: 'pages'
-    label: 'Pages'
+  - name: "pages"
+    label: "Pages"
     create: true
     files:
-      - file: 'src/pages/about/index.md'
-        label: 'About'
-        name: 'about'
+      - file: "src/pages/about/index.md"
+        label: "About"
+        name: "about"
         fields:
           - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'about-page',
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "about-page",
             }
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Body', name: 'body', widget: 'markdown' }
-      - file: 'src/pages/products/index.md'
-        label: 'Products Page'
-        name: 'products'
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "src/pages/products/index.md"
+        label: "Products Page"
+        name: "products"
         fields:
           - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'product-page',
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "product-page",
             }
           - { label: Title, name: title, widget: string }
           - { label: Image, name: image, widget: image }
@@ -233,6 +233,30 @@ collections:
                           widget: string,
                         },
                         { label: Items, name: items, widget: list },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Banner,
+              name: banner,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  {
+                    label: Slides,
+                    name: slides,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Title, name: title, widget: string },
+                        { label: Body, name: body, widget: string },
+                        {
+                          label: Background Image,
+                          name: background_image,
+                          widget: image,
+                        },
                       ],
                   },
                 ],

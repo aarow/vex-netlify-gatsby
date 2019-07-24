@@ -1,0 +1,59 @@
+/*
+Variables
+*/
+
+$vex: #a21e24;
+$primary: $vex;
+
+/*
+functions
+*/
+
+@function pixToRem($pixels) {
+  @return $pixels / $body-size * 1rem;
+}
+
+/*
+Mixins
+*/
+
+/*
+Imports
+*/
+@import "~bootstrap/scss/bootstrap";
+
+/*
+Global
+*/
+
+.bg-full {
+  background-size: cover;
+  background-position: center;
+}
+
+/*
+Site Navigation
+*/
+.site-logo {
+  height: 3rem;
+
+  * {
+    stroke: rgba(black, 0.5) !important;
+    transition: all 400ms;
+  }
+
+  &:hover {
+    * {
+      stroke: rgba(black, 1) !important;
+    }
+  }
+}
+/*
+Personnel 
+*/
+
+.avatar--circle {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+}
