@@ -1,20 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Banner = ({ data }) => (
-  <div className="columns">
-    {data.map(banner => (
-      <div key={price.plan} className="column">
-        <section className="section">{banner.title}</section>
+const Banner = ({ slideList }) => (
+  <div className="">
+    {slideList.map(slide => (
+      <div key={slide.title} className="">
+        <div
+          className="bg-full"
+          style={{
+            backgroundImage: `url("${slide.background_image.publicURL}")`
+          }}
+        >
+          <div className="text-white">{slide.title}</div>
+        </div>
       </div>
     ))}
   </div>
 );
 
 Banner.propTypes = {
-  data: PropTypes.arrayOf(
+  slideList: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string
+      title: PropTypes.string,
+      background_image: PropTypes.shape({
+        publicURL: PropTypes.string
+      })
     })
   )
 };

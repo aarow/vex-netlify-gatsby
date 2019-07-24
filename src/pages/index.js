@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
-import Sessions from '../components/Sessions';
-import PriceList from '../components/PriceList';
-import Team from '../components/Team';
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import Layout from "../components/Layout";
+import Sessions from "../components/Sessions";
+import PriceList from "../components/PriceList";
+import Team from "../components/Team";
+import Banner from "../components/Banner";
 
 export default class IndexPage extends React.Component {
   render() {
@@ -12,12 +13,20 @@ export default class IndexPage extends React.Component {
     const { edges: classList } = data.classList;
     const { edges: priceLists } = data.priceLists;
     const { edges: teamList } = data.teamList;
+    const { edges: bannerList } = data.bannerList;
     return (
       <Layout>
-        <section className='vex-classes container'>
+        <section>
+          <Banner
+            className="vex-banner"
+            slideList={bannerList[0].node.frontmatter.slides}
+          />
+        </section>
+
+        <section className="vex-classes container">
           <Sessions classList={classList} />
         </section>
-        <section className='vex-price-lists container'>
+        <section className="vex-price-lists container">
           {priceLists.map(priceList => (
             <PriceList
               key={priceList.node.id}
@@ -25,7 +34,7 @@ export default class IndexPage extends React.Component {
             />
           ))}
         </section>
-        <section className='vex-team container'>
+        <section className="vex-team container">
           <Team teamList={teamList} />
         </section>
       </Layout>
@@ -43,6 +52,25 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
+    bannerList: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "banner" } } }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            slides {
+              title
+              background_image {
+                publicURL
+              }
+            }
+          }
+        }
+      }
+    }
     classList: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { templateKey: { eq: "class-entry" } } }
