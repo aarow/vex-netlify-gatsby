@@ -91,7 +91,6 @@ collections:
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
-
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
@@ -237,27 +236,33 @@ collections:
                   },
                 ],
             }
-          - {
-              label: Banner,
-              name: banner,
-              widget: object,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  {
-                    label: Slides,
-                    name: slides,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Title, name: title, widget: string },
-                        { label: Body, name: body, widget: string },
-                        {
-                          label: Background Image,
-                          name: background_image,
-                          widget: image,
-                        },
-                      ],
-                  },
-                ],
-            }
+  - name: "banners"
+    label: "Banners"
+    folder: "src/pages/banners"
+    label_singular: "Banner"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: title
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "banner",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: Slides,
+          name: slides,
+          widget: list,
+          fields:
+            [
+              { label: "Title", name: title, widget: string },
+              { label: Body, name: body, widget: markdown },
+              {
+                label: "Background Image",
+                name: background_image,
+                widget: image,
+              },
+            ],
+        }
