@@ -52,6 +52,7 @@
   "devDependencies": {
     "gatsby-plugin-antd": "^2.0.2",
     "less-loader": "^5.0.0",
+    "netlify-cms-app": "^2.9.6",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3"
   }
