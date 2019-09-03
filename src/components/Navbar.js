@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import { Link } from 'gatsby';
 import {
   Collapse,
@@ -8,8 +8,8 @@ import {
   Nav,
   NavItem,
   NavLink
-} from 'reactstrap';
-import Logo from './Logo';
+} from "reactstrap";
+import Logo from "./Logo";
 
 const SiteNavbar = class extends React.Component {
   constructor(props) {
@@ -23,21 +23,21 @@ const SiteNavbar = class extends React.Component {
   componentDidMount() {
     // Get all "navbar-burger" elements
     const $navbarBurgers = Array.prototype.slice.call(
-      document.querySelectorAll('.navbar-burger'),
+      document.querySelectorAll(".navbar-burger"),
       0
     );
     // Check if there are any navbar burgers
     if ($navbarBurgers.length > 0) {
       // Add a click event on each of them
       $navbarBurgers.forEach(el => {
-        el.addEventListener('click', () => {
+        el.addEventListener("click", () => {
           // Get the target from the "data-target" attribute
           const target = el.dataset.target;
           const $target = document.getElementById(target);
 
           // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          el.classList.toggle('is-active');
-          $target.classList.toggle('is-active');
+          el.classList.toggle("is-active");
+          $target.classList.toggle("is-active");
         });
       });
     }
@@ -51,18 +51,23 @@ const SiteNavbar = class extends React.Component {
   render() {
     return (
       <>
-        <Navbar color='light' light expand='md' className='bg-white'>
-          <NavbarBrand href='/'>
-            <Logo className='site-logo' />
+        <Navbar
+          color="light"
+          light
+          expand="md"
+          className="bg-transparent w-100"
+        >
+          <NavbarBrand href="/">
+            <Logo className="site-logo" />
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
+          <NavbarToggler onClick={this.toggle} className="border-0" />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className='ml-auto text-uppercase' navbar>
+            <Nav className="ml-auto text-uppercase" navbar>
               <NavItem>
-                <NavLink href='/components/'>Components</NavLink>
+                <NavLink href="/components/">Components</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='https://github.com/reactstrap/reactstrap'>
+                <NavLink href="https://github.com/reactstrap/reactstrap">
                   GitHub
                 </NavLink>
               </NavItem>

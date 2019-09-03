@@ -1,31 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Banner = ({ slideList }) => (
-  <div className="vex-banner--slide--container">
-    {slideList.map(slide => (
+const Banner = ({ html, frontmatter: { background_image } }) => (
+  <>
+    <div
+      className="vex-banner--slide bg-full d-flex justify-content-center align-items-center"
+      style={{
+        backgroundImage: `url("${background_image.publicURL}")`
+      }}
+    >
       <div
-        key={slide.title}
-        className="vex-banner--slide bg-full d-flex justify-content-center align-items-center"
-        style={{
-          backgroundImage: `url("${slide.background_image.publicURL}")`
-        }}
-      >
-        <div className="text-white slide-body">{slide.title}</div>
-      </div>
-    ))}
-  </div>
+        className="slide-body text-center"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    </div>
+  </>
 );
 
 Banner.propTypes = {
-  slideList: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      background_image: PropTypes.shape({
-        publicURL: PropTypes.string
-      })
-    })
-  )
+  id: PropTypes.string,
+  title: PropTypes.string,
+  html: PropTypes.string,
+  background_image: PropTypes.shape({
+    publicURL: PropTypes.string
+  })
 };
 
 export default Banner;

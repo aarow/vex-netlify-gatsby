@@ -251,18 +251,5 @@ collections:
           default: "banner",
         }
       - { label: "Title", name: "title", widget: "string" }
-      - {
-          label: Slides,
-          name: slides,
-          widget: list,
-          fields:
-            [
-              { label: "Title", name: title, widget: string },
-              { label: Body, name: body, widget: markdown },
-              {
-                label: "Background Image",
-                name: background_image,
-                widget: image,
-              },
-            ],
-        }
+      - { label: "Background Image", name: "background_image", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }

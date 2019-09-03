@@ -1,25 +1,54 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { HTMLContent } from './Content';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { HTMLContent } from "./Content";
+import posed from "react-pose";
 
-const Session = ({ session: { frontmatter, html } }) => (
-  <>
-    <h2>{frontmatter.title}</h2>
-    <HTMLContent content={html} />
-  </>
+const AccordionBodyPose = posed.div({
+  start: {
+    height: 0,
+    overflow: "hidden"
+  },
+  end: {
+    height: "auto",
+    transition: {
+      duration: 400
+    }
+  }
+});
+
+const Session = ({ show, session, toggleSession }) => (
+  <div
+    onMouseDown={() => {
+      toggleSession(session.id);
+    }}
+  >
+    <h2 className="accordion-header">{session.frontmatter.title}</h2>
+    <div className="accordion-body">
+      <AccordionBodyPose pose={show ? "end" : "start"}>
+        <HTMLContent content={session.html} />
+      </AccordionBodyPose>
+    </div>
+  </div>
 );
 
-const Sessions = ({ classList }) => (
-  <>
-    <ul className='list-unstyled row'>
-      {classList.map(({ node: aClass }) => (
-        <li key={aClass.id} className='col-lg-4 col-md-6 '>
-          <Session session={aClass} />
-        </li>
-      ))}
-    </ul>
-  </>
-);
+const Sessions = ({ classList }) => {
+  const [openSession, toggleSession] = useState("");
+  return (
+    <>
+      <ul className="list-unstyled ">
+        {classList.map(({ node: aClass }) => (
+          <li key={aClass.id} className="accordion-container">
+            <Session
+              session={aClass}
+              toggleSession={toggleSession}
+              show={openSession === aClass.id}
+            />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
 
 Sessions.propTypes = {
   classList: PropTypes.arrayOf(
