@@ -82,7 +82,6 @@ export default class IndexPage extends React.Component {
     const { data } = this.props;
     const { edges: classList } = data.classList;
     const { edges: priceLists } = data.priceLists;
-    const { edges: teamList } = data.teamList;
     const { edges: bannerList } = data.bannerList;
     return (
       <Layout>
@@ -103,7 +102,7 @@ export default class IndexPage extends React.Component {
           </div>
         </section>
         <section className="vex-team container full-height  py-5  d-flex align-items-center">
-          <Team teamList={teamList} />
+          <Team />
         </section>
       </Layout>
     );
@@ -157,26 +156,6 @@ export const pageQuery = graphql`
           rawMarkdownBody
           frontmatter {
             title
-          }
-        }
-      }
-    }
-    teamList: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "team-member" } } }
-    ) {
-      edges {
-        node {
-          html
-          id
-          frontmatter {
-            title
-            job_title
-            email
-            image {
-              id
-              publicURL
-            }
           }
         }
       }
