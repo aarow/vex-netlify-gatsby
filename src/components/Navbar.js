@@ -9,6 +9,8 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import Modal from "./Modal";
+import Schedule from "./Schedule";
 import Logo from "./Logo";
 
 const SiteNavbar = class extends React.Component {
@@ -55,21 +57,36 @@ const SiteNavbar = class extends React.Component {
           color="light"
           light
           expand="md"
-          className="bg-transparent w-100"
+          className="bg-white w-100 position-sticky sticky-top"
         >
           <NavbarBrand href="/">
             <Logo className="site-logo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} className="border-0" />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto text-uppercase" navbar>
+            <Nav className="ml-auto " navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/components/" className="text-uppercase">
+                  Components
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLink
+                  href="https://github.com/reactstrap/reactstrap"
+                  className="text-uppercase"
+                >
                   GitHub
                 </NavLink>
+              </NavItem>
+              <NavItem>
+                <Modal
+                  trigger={
+                    <NavLink href="#" className="text-uppercase">
+                      Schedule
+                    </NavLink>
+                  }
+                  modal={<Schedule />}
+                ></Modal>
               </NavItem>
             </Nav>
           </Collapse>

@@ -1,6 +1,7 @@
 import React from "react";
-// import { HTMLContent } from "./Content";
-import { Link, graphql, useStaticQuery } from "gatsby";
+import { HTMLContent } from "./Content";
+import { graphql, useStaticQuery } from "gatsby";
+import Modal from "./Modal";
 
 export default props => {
   const {
@@ -18,6 +19,7 @@ export default props => {
             fields {
               slug
             }
+            html
             frontmatter {
               title
               job_title
@@ -42,7 +44,10 @@ export default props => {
             key={teamMember.id}
             className="team-list--item col-lg-4 col-sm-6 mb-5"
           >
-            <TeamMember teamMember={teamMember} />
+            <Modal
+              trigger={<TeamMember teamMember={teamMember} />}
+              content={<TeamMemberDetails teamMember={teamMember} />}
+            ></Modal>
           </li>
         ))}
       </ul>
@@ -51,27 +56,58 @@ export default props => {
 };
 
 const TeamMember = ({ teamMember }) => {
-  const { frontmatter, html } = teamMember;
+  const { frontmatter } = teamMember;
+
   return (
-    <div className="team-list--card card border-0 text-center h-100">
+    <div className="team-list--card card  neumophic-up-flat border-0 text-center h-100">
       <div className="card-body py-5 d-flex flex-column justify-content-between align-items-center">
-        <div className="avatar--circle--outer ">
-          <div className="avatar--circle--outline"></div>
+        <div className="avatar--circle--outer mb-3 d-flex align-items-center justify-content-center neumophic-down-flat">
           <div
-            className="avatar--circle bg-full mx-auto mb-3 "
-            style={{ backgroundImage: `url("${frontmatter.image.publicURL}")` }}
+            className="avatar--circle bg-full "
+            style={{
+              backgroundImage: `url("${frontmatter.image.publicURL}")`
+            }}
           ></div>
         </div>
         <h3 className="mb-0">{frontmatter.title}</h3>
         <div className="mb-3">
           <small>{frontmatter.job_title}</small>
         </div>
+      </div>
+    </div>
+  );
+};
 
-        {/* <HTMLContent content={html} className="team-list--description" /> */}
-        <div className="flex-grow-1">{teamMember.excerpt}</div>
-        <Link className="mt-3" to={teamMember.fields.slug}>
-          <i className="material-icons-round md-48">add_circle_outline</i>
-        </Link>
+const TeamMemberDetails = ({ teamMember, className = "" }) => {
+  const { frontmatter, html } = teamMember;
+
+  return (
+    <div
+      className={
+        className +
+        "team-list--details team-member--details bg-light container-fluid min-vh-100"
+      }
+    >
+      <div className="row h-100 ">
+        <div className=" col-sm-5 p-0 mt-md-5 text-right">
+          <div
+            className="team-member--avatar bg-full d-inline-block"
+            style={{
+              backgroundImage: `url("${frontmatter.image.publicURL}")`
+            }}
+          ></div>
+        </div>
+        <div className="team-member--content col-sm-7 py-5 px-4 p-sm-5 ">
+          <div className="d-flex">
+            <div className="col-lg-9 col-xl-7">
+              <h3 className="mb-3">{frontmatter.title}</h3>
+              <div className="mb-3">
+                <small>{frontmatter.job_title}</small>
+              </div>
+              <HTMLContent content={html} className="text-left overflow-auto" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
