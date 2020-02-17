@@ -4,7 +4,7 @@ title: Single Class Packages
 prices:
   - description: Any class offered
     link: '#'
-    link_title: Details
+    link_title: Sign up Single Class
     price: '15'
     product_code: '10124'
     product_title: Single Class
