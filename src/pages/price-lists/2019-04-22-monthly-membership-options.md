@@ -5,7 +5,6 @@ prices:
   - description: $84 Month to Month Billing
     link: '#'
     link_title: Details
-    link_to: '10151'
     price: '75.60'
     product_code: '10116'
     product_title: 8 Classes
@@ -13,7 +12,6 @@ prices:
   - description: $89 Month to Month Billing
     link: '#'
     link_title: Details
-    link_to: '10151'
     price: '80.10'
     product_code: '10102'
     product_title: 12 Classes
@@ -21,7 +19,6 @@ prices:
   - description: $94 Month to Month Billing
     link: '#'
     link_title: Details
-    link_to: '10151'
     price: '84.60'
     product_code: '10103'
     product_title: 16 Classes
@@ -29,7 +26,6 @@ prices:
   - description: $99 Month to Month Billing
     link: '#'
     link_title: Details
-    link_to: '10151'
     price: '89.10'
     product_code: '10151'
     product_title: Unlimited
