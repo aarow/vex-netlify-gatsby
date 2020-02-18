@@ -16,9 +16,9 @@ export default ({ trigger, content }) => {
 
   useEffect(() => {
     if (showModal) {
-      document.querySelector("body").style.overflow = "hidden";
+      document.querySelector("html").style.overflow = "hidden";
     } else {
-      document.querySelector("body").style.overflow = "auto";
+      document.querySelector("html").style.overflow = null;
     }
   }, [showModal]);
 
@@ -27,21 +27,21 @@ export default ({ trigger, content }) => {
       {/* {showModal && <Overlay showModal={showModal} />} */}
       <Trigger updateModal={updateModal}>{trigger}</Trigger>
 
-      <Modal showModal={showModal}>
+      <ModalContainer showModal={showModal}>
         {content}
         <CloseButton closeModal={updateModal}></CloseButton>
-      </Modal>
+      </ModalContainer>
     </>
   );
 };
 
-const Modal = ({ children, onClose, showModal }) => {
+const ModalContainer = ({ children, onClose, showModal }) => {
   return createPortal(
     <AnimatePresence>
       {showModal && (
         <motion.div
           {...modalAnimateOptions}
-          className="modal-container position-fixed overflow-auto"
+          className="modal-container position-fixed overflow-auto bg-white"
         >
           {children}
         </motion.div>
@@ -61,9 +61,7 @@ const CloseButton = ({ closeModal }) => (
       right: "0",
       top: "0",
       width: "3rem",
-      height: "3rem",
-
-      borderRadius: "0 0 0 25px"
+      height: "3rem"
     }}
   >
     <span className="sr-only">Close</span>
@@ -76,35 +74,6 @@ const CloseButton = ({ closeModal }) => (
 const Trigger = ({ children, updateModal }) => (
   <div onClick={updateModal}>{children}</div>
 );
-
-const Overlay = ({ showModal }) => {
-  return createPortal(
-    <AnimatePresence>
-      {showModal && (
-        <motion.div {...overlayAnimateOptions} className="position-fixed">
-          <div className="body-overlay"></div>
-        </motion.div>
-      )}
-    </AnimatePresence>,
-    overlayRoot
-  );
-};
-
-const overlayAnimateOptions = {
-  initial: {
-    top: 0,
-    left: 0,
-    minWidth: "100vw",
-    minHeight: "100vh",
-    opacity: 0,
-    zIndex: 2000
-  },
-  animate: { opacity: 1 },
-  exit: {
-    opacity: 0
-  },
-  transition: { duration: 0.25, type: "tween", ease: "easeInOut" }
-};
 
 const modalAnimateOptions = {
   initial: {

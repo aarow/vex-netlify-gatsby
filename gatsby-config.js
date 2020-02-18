@@ -72,6 +72,7 @@ module.exports = {
           // `playfair display\:400,400i,700,700i,900,900i`,
           // `proza libre\:200,400,400i,500,600,700`,
           `alegreya sans\:100,300,400,500`,
+          `BioRhyme:\:200,300,400,700,800`,
           `open sans\:200,200i,300,300i,400,400i`,
           `material icons`,
           `material icons round` // you can also specify font weights and styles

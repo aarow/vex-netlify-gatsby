@@ -69,7 +69,7 @@ const TeamMember = ({ teamMember }) => {
             }}
           ></div>
         </div>
-        <h3 className="mb-0">{frontmatter.title}</h3>
+        <h4 className="mb-0">{frontmatter.title}</h4>
         <div className="mb-3">
           <small>{frontmatter.job_title}</small>
         </div>
@@ -85,7 +85,7 @@ const TeamMemberDetails = ({ teamMember, className = "" }) => {
     <div
       className={
         className +
-        "team-list--details team-member--details bg-light container-fluid min-vh-100"
+        "team-list--details team-member--details  container-fluid min-vh-100"
       }
     >
       <div className="row h-100 ">

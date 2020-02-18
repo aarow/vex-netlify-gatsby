@@ -39,6 +39,11 @@ html {
   }
 }
 
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .bg-full {
   background-size: cover;
   background-position: center;
@@ -78,37 +83,6 @@ small,
 .modal-container {
   // border-radius: 50px;
   overflow: hidden;
-}
-
-.neumophic-up-flat {
-  border-radius: 50px;
-  background-color: #f6f6f6;
-  box-shadow: 5px 5px 10px #efefef, -5px -5px 10px #fdfdfd;
-}
-
-.neumophic-down-flat {
-  border-radius: 50px;
-  background-color: #f6f6f6;
-  box-shadow: inset 5px 5px 10px rgba(black, 0.1),
-    inset -5px -5px 10px rgba(white, 1);
-}
-
-.card {
-  border-radius: 50px;
-}
-
-.btn {
-  border: none;
-  // border: 2px solid #f6f6f6;
-  transition: all 400ms;
-  border-radius: 50px;
-  background: #f6f6f6;
-  box-shadow: 8px 8px 10px #efefef, -8px -8px 10px #fdfdfd;
-  padding: 0.4em 1.5em;
-
-  &:hover {
-    background: #ecf7ff;
-  }
 }
 
 /*

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HTMLContent } from "./Content";
 import { graphql, useStaticQuery } from "gatsby";
+import load from "load-script";
 
 const PriceListList = () => {
   const {
@@ -24,6 +25,7 @@ const PriceListList = () => {
                 price
                 product_title
                 unit
+                product_code
               }
             }
           }
@@ -31,6 +33,7 @@ const PriceListList = () => {
       }
     }
   `);
+
   return (
     <>
       {priceListList.map(priceList => (
@@ -45,10 +48,8 @@ const PriceListList = () => {
 
 const PriceList = ({ priceList }) => {
   return (
-    <div className="price-list--container">
-      <h2 className="price-list--title text-uppercase mt-5 mb-2">
-        {priceList.title}
-      </h2>
+    <div className="price-list--container mt-5">
+      <h3 className="price-list--title my-5 text-center">{priceList.title}</h3>
       <ul className="price-list--item list-unstyled row">
         {priceList.prices.map(priceItem => (
           <li
@@ -63,26 +64,50 @@ const PriceList = ({ priceList }) => {
   );
 };
 
-const PriceItem = priceItem => (
-  <div className="price-list--card card neumophic-up-flat h-100 border-0">
-    <div className="card-body py-5">
-      <h3 className="mb-3">{priceItem.product_title}</h3>
+const PriceItem = priceItem => {
+  useEffect(() => {
+    load(
+      `https://widgets.healcode.com/javascripts/healcode.js`,
+      (err, script) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(script.src);
+        }
+      }
+    );
+  });
 
-      <div className="desc mb-3">
-        <HTMLContent content={priceItem.description} />
-      </div>
-      <div className="price mb-3">
-        <span className="h4">${priceItem.price}</span>
-        <span> per {priceItem.unit}</span>
-        <br />
-        <small>(3 Month Autopay Discount)</small>
-      </div>
+  const healcodeWidget = (product_code, button_text) => ({
+    __html: `<healcode-widget data-version="0.2" data-link-class="btn  btn-dark h5" data-site-id="21898" data-mb-site-id="522673" data-type="pricing-link" data-inner-html="${button_text}" data-service-id="${product_code}" />`
+  });
 
-      <a href={priceItem.link} className="btn btn-lg">
-        {priceItem.link_title}
-      </a>
+  return (
+    <div className="price-list--card card h-100 border-1">
+      <div className="card-body py-5">
+        <h4 className="mb-3 ">{priceItem.product_title}</h4>
+
+        <div className="desc mb-3">
+          <HTMLContent content={priceItem.description} />
+        </div>
+        <div className="price mb-3">
+          <span className="h4">${priceItem.price}</span>
+          <span> per {priceItem.unit}</span>
+          <br />
+          <small>(3 Month Autopay Discount)</small>
+        </div>
+
+        {priceItem.product_code && (
+          <div
+            dangerouslySetInnerHTML={healcodeWidget(
+              priceItem.product_code,
+              priceItem.link_title
+            )}
+          ></div>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default PriceListList;
