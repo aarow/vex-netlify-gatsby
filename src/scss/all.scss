@@ -89,11 +89,6 @@ small,
 Site Navigation
 */
 
-.navbar {
-  @include media-breakpoint-up(sm) {
-    position: absolute;
-  }
-}
 .site-logo {
   height: 3rem;
 

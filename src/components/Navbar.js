@@ -41,7 +41,7 @@ const SiteNavbar = () => {
   return (
     <div
       ref={navRef}
-      className="position-sticky sticky-top bg-white"
+      className="position-sticky sticky-top "
       style={{ transition: `all 250ms` }}
     >
       <Navbar color="light" light expand="md" className="bg-transparent w-100 ">
