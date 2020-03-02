@@ -17,7 +17,7 @@ const IndexPage = ({ data }) => {
         <HomeTop />
       </section>
       <FadeIn>
-        <section className="vex-classes container  d-flex align-items-center">
+        <section className="vex-classes container">
           <Sessions classList={classList} />
         </section>
       </FadeIn>
