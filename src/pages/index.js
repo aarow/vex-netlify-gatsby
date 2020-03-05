@@ -7,10 +7,11 @@ import Sessions from "../components/Sessions";
 import PriceListList from "../components/PriceList";
 import Team from "../components/Team";
 import HomeTop from "../components/HomeTop";
+import { HTMLContent } from "../components/Content";
 
 const IndexPage = ({ data }) => {
-  const { edges: classList } = data.classList;
-
+  const sessionList = getSessionsOnly(data);
+  console.log("from index:", sessionList);
   return (
     <Layout>
       <section className="vex-banner--home full-height">
@@ -18,7 +19,7 @@ const IndexPage = ({ data }) => {
       </section>
       <FadeIn>
         <section className="vex-classes container">
-          <Sessions classList={classList} />
+          <Sessions sessionList={sessionList} />
         </section>
       </FadeIn>
       <FadeIn>
@@ -62,9 +63,23 @@ const FadeIn = props => {
   );
 };
 
-export const pageQuery = graphql`
-  query IndexQuery {
-    classList: allMarkdownRemark(
+export const getSessionsOnly = data => {
+  const {
+    allMarkdownRemark: { edges }
+  } = data;
+  return edges.map(({ node: { id, html, frontmatter } }) => {
+    return {
+      id,
+      body: <HTMLContent content={html} />,
+      header: frontmatter.title,
+      publicURL: frontmatter.image ? frontmatter.image.publicURL : ""
+    };
+  });
+};
+
+export const query = graphql`
+  query SessionListQuery {
+    allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { templateKey: { eq: "class-entry" } } }
     ) {
@@ -78,6 +93,9 @@ export const pageQuery = graphql`
           rawMarkdownBody
           frontmatter {
             title
+            image {
+              publicURL
+            }
           }
         }
       }

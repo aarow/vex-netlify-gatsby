@@ -45,6 +45,18 @@ button:focus {
   box-shadow: none;
 }
 
+.trapezoid-clip {
+  clip-path: polygon(0% 0%, 70% 0%, 95% 100%, 0% 100%);
+  shape-outside: polygon(0% 0%, 75% 0%, 100% 100%, 0% 100%);
+}
+
+.d-inline--children {
+  &,
+  * {
+    display: inline;
+  }
+}
+
 .bg-full {
   background-size: cover;
   background-position: center;
@@ -220,4 +232,25 @@ Personnel
 
 .bw-widget__header {
   padding-right: 3rem;
+}
+
+.accordion-container {
+  margin-left: 2em;
+}
+
+.accordion-header {
+  position: relative;
+  cursor: pointer;
+}
+
+.accordion-header:before {
+  content: "+";
+  position: absolute;
+  right: calc(100% + 1em);
+  font-size: 1.5em;
+  line-height: 1em;
+}
+
+.accordion-header.open:before {
+  content: "–";
 }

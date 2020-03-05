@@ -6,33 +6,7 @@ import load from "load-script";
 const PriceListList = () => {
   const {
     allMarkdownRemark: { edges: priceListList }
-  } = useStaticQuery(graphql`
-    query PriceListListQuery {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        filter: { frontmatter: { templateKey: { eq: "price-list" } } }
-      ) {
-        edges {
-          node {
-            html
-            id
-            frontmatter {
-              title
-              prices {
-                description
-                link
-                link_title
-                price
-                product_title
-                unit
-                product_code
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  } = useStaticQuery(priceListQuery);
 
   return (
     <>
@@ -71,8 +45,6 @@ const PriceItem = priceItem => {
       (err, script) => {
         if (err) {
           console.log(err);
-        } else {
-          console.log(script.src);
         }
       }
     );
@@ -109,5 +81,33 @@ const PriceItem = priceItem => {
     </div>
   );
 };
+
+export const priceListQuery = graphql`
+  query PriceListListQuery {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "price-list" } } }
+    ) {
+      edges {
+        node {
+          html
+          id
+          frontmatter {
+            title
+            prices {
+              description
+              link
+              link_title
+              price
+              product_title
+              unit
+              product_code
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default PriceListList;

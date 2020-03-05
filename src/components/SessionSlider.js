@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Carousel, CarouselItem } from "reactstrap";
 
 const SessionSlider = ({ classList = [], currentClass }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [activeClass, setActiveClass] = useState(currentClass);
+  const findClassIndex = () => classList.indexOf(currentClass);
+  const [activeIndex, setActiveIndex] = useState(findClassIndex);
   const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
-    console.log("activeClass:", activeClass);
-    console.log("currentClass: ", currentClass);
+    goToIndex(findClassIndex);
   }, [currentClass]);
 
   const next = () => {
@@ -30,15 +29,29 @@ const SessionSlider = ({ classList = [], currentClass }) => {
     setActiveIndex(newIndex);
   };
 
-  const slides = classList.map(({ node }) => {
+  const slides = classList.map(({ id, header, publicURL }) => {
+    const style = {
+      width: "100%",
+      // background: `
+      //   linear-gradient(115deg, transparent 75%, white 75.1%),
+      //   url("${publicURL}") no-repeat center center
+      // `,
+      background: `
+        url("${publicURL}") no-repeat center center
+      `,
+      backgroundSize: "cover",
+      // padding: "66.66% 0 0 0"
+      padding: "100% 0 0 0 "
+    };
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={node.id + node.frontmatter.title}
+        key={id}
       >
-        {node.id}
-        {/* <img src={item.src} alt={item.altText} /> */}
+        {/* {header} */}
+        <span className="d-block" style={style}></span>
+        {/* <img src={publicURL} alt={header} width="200px" /> */}
       </CarouselItem>
     );
   });
