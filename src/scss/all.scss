@@ -46,15 +46,8 @@ button:focus {
 }
 
 .trapezoid-clip {
-  clip-path: polygon(0% 0%, 70% 0%, 95% 100%, 0% 100%);
-  shape-outside: polygon(0% 0%, 75% 0%, 100% 100%, 0% 100%);
-}
-
-.d-inline--children {
-  &,
-  * {
-    display: inline;
-  }
+  clip-path: polygon(0% 0%, 70% 0%, 90% 100%, 0% 100%);
+  shape-outside: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
 }
 
 .bg-full {
@@ -236,6 +229,10 @@ Personnel
 
 .accordion-container {
   margin-left: 2em;
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .accordion-header {
@@ -243,12 +240,19 @@ Personnel
   cursor: pointer;
 }
 
-.accordion-header:before {
-  content: "+";
-  position: absolute;
-  right: calc(100% + 1em);
-  font-size: 1.5em;
-  line-height: 1em;
+.accordion-header {
+  * {
+    display: inline-block;
+  }
+
+  &:before {
+    content: "+";
+    font-size: 1.5em;
+    line-height: 1em;
+    display: inline-block;
+    width: 1.5rem;
+    margin-left: -1.5rem;
+  }
 }
 
 .accordion-header.open:before {

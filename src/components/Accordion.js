@@ -65,9 +65,7 @@ const Accordion = ({
         transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
         className=""
       >
-        <div className={`accordion-body ${bodyClass}`}>
-          <div className="d-inline--children">{item.body}</div>
-        </div>
+        <div className={`accordion-body ${bodyClass}`}>{item.body}</div>
       </motion.div>
     </article>
   );
