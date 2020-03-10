@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import throttle from "lodash/throttle";
-// import { Link } from 'gatsby';
+import { Link, animateScroll as scroll } from "react-scroll";
 import {
   Collapse,
   Navbar,
@@ -10,6 +10,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+
 import Modal from "./Modal";
 import Schedule from "./Schedule";
 import Logo from "./Logo";
@@ -41,7 +42,7 @@ const SiteNavbar = () => {
   return (
     <div
       ref={navRef}
-      className="position-sticky sticky-top "
+      className="position-fixed w-100 "
       style={{ transition: `all 250ms` }}
     >
       <Navbar color="light" light expand="md" className="bg-transparent w-100 ">
@@ -55,7 +56,18 @@ const SiteNavbar = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto text-uppercase" navbar>
             <NavItem>
-              <NavLink href="#">Components</NavLink>
+              <Link
+                href="#"
+                className="nav-link"
+                spy={true}
+                activeClass="active"
+                to="sectionTeam"
+                smooth={true}
+                duration={500}
+                isDynamic={true}
+              >
+                Team
+              </Link>
             </NavItem>
             <NavItem>
               <NavLink href="#">GitHub</NavLink>

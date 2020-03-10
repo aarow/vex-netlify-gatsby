@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { HTMLContent } from "./Content";
 import { graphql, useStaticQuery } from "gatsby";
-import load from "load-script";
 
 const PriceListList = () => {
   const {
@@ -39,17 +38,6 @@ const PriceList = ({ priceList }) => {
 };
 
 const PriceItem = priceItem => {
-  useEffect(() => {
-    load(
-      `https://widgets.healcode.com/javascripts/healcode.js`,
-      (err, script) => {
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
-  });
-
   const healcodeWidget = (product_code, button_text) => ({
     __html: `<healcode-widget data-version="0.2" data-link-class="btn  btn-dark h5" data-site-id="21898" data-mb-site-id="522673" data-type="pricing-link" data-inner-html="${button_text}" data-service-id="${product_code}" />`
   });

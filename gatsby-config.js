@@ -1,8 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter",
-    description:
-      "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution."
+    title: "Vex Yoga & Fitness",
+    description: ""
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -69,8 +68,6 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          // `playfair display\:400,400i,700,700i,900,900i`,
-          // `proza libre\:200,400,400i,500,600,700`,
           `alegreya sans\:100,300,400,500`,
           `BioRhyme:\:200,300,400,700,800`,
           `open sans\:200,200i,300,300i,400,400i`,

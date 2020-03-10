@@ -30,7 +30,10 @@ const IndexPage = ({ data }) => {
         </section>
       </FadeIn>
       <FadeIn>
-        <section className="vex-team container  py-5  d-flex align-items-center">
+        <section
+          className="vex-team container  py-5  d-flex align-items-center"
+          id="sectionTeam"
+        >
           <Team />
         </section>
       </FadeIn>
