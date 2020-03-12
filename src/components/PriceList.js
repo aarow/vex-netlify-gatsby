@@ -27,7 +27,7 @@ const PriceList = ({ priceList }) => {
         {priceList.prices.map(priceItem => (
           <li
             key={priceItem.price}
-            className="price-list--item col-lg-3 col-sm-6 mb-5 mb-lg-0 text-center"
+            className="price-list--item col-lg-3 col-sm-6 mb-5 mb-lg-0 mx-5 mx-sm-auto  text-center"
           >
             <PriceItem {...priceItem} />
           </li>
@@ -39,7 +39,7 @@ const PriceList = ({ priceList }) => {
 
 const PriceItem = priceItem => {
   const healcodeWidget = (product_code, button_text) => ({
-    __html: `<healcode-widget data-version="0.2" data-link-class="btn  btn-dark h5" data-site-id="21898" data-mb-site-id="522673" data-type="pricing-link" data-inner-html="${button_text}" data-service-id="${product_code}" />`
+    __html: `<healcode-widget data-version="0.2" data-link-class="btn  btn-dark btn-sm" data-site-id="21898" data-mb-site-id="522673" data-type="pricing-link" data-inner-html="${button_text}" data-service-id="${product_code}" />`
   });
 
   return (

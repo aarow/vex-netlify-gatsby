@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import throttle from "lodash/throttle";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import {
   Collapse,
   Navbar,
@@ -42,7 +42,7 @@ const SiteNavbar = () => {
   return (
     <div
       ref={navRef}
-      className="position-fixed w-100 "
+      className="position-fixed fixed-top"
       style={{ transition: `all 250ms` }}
     >
       <Navbar color="light" light expand="md" className="bg-transparent w-100 ">
@@ -55,23 +55,11 @@ const SiteNavbar = () => {
         />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto text-uppercase" navbar>
-            <NavItem>
-              <Link
-                href="#"
-                className="nav-link"
-                spy={true}
-                activeClass="active"
-                to="sectionTeam"
-                smooth={true}
-                duration={500}
-                isDynamic={true}
-              >
-                Team
-              </Link>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">GitHub</NavLink>
-            </NavItem>
+            <ScrollingLink to="sectionClasses" offset={-160}>
+              Classes
+            </ScrollingLink>
+            <ScrollingLink to="sectionTeam">Team</ScrollingLink>
+            <ScrollingLink to="sectionPrices">Prices</ScrollingLink>
             <NavItem>
               <Modal
                 trigger={
@@ -88,5 +76,23 @@ const SiteNavbar = () => {
     </div>
   );
 };
+
+const ScrollingLink = ({ to, offset = 0, children }) => (
+  <NavItem>
+    <Link
+      href="#"
+      className="nav-link"
+      spy={true}
+      activeClass="active"
+      to={to}
+      smooth={true}
+      duration={500}
+      isDynamic={true}
+      offset={offset}
+    >
+      {children}
+    </Link>
+  </NavItem>
+);
 
 export default SiteNavbar;

@@ -11,37 +11,35 @@ import { HTMLContent } from "../components/Content";
 
 const IndexPage = ({ data }) => {
   const sessionList = getSessionsOnly(data);
-  console.log("from index:", sessionList);
   return (
     <Layout>
       <section className="vex-banner--home full-height">
         <HomeTop />
       </section>
-      <FadeIn>
-        <section className="vex-classes container">
-          <Sessions sessionList={sessionList} />
-        </section>
+      <FadeIn
+        id="sectionClasses"
+        className="vex-classes container"
+        topOffset="25%"
+      >
+        <Sessions sessionList={sessionList} />
       </FadeIn>
-      <FadeIn>
-        <section className="vex-price-lists  py-5 d-flex align-items-center">
-          <div className="container">
-            <PriceListList />
-          </div>
-        </section>
+      <FadeIn
+        className="vex-team container  py-5  d-flex align-items-center"
+        id="sectionTeam"
+      >
+        <Team />
       </FadeIn>
-      <FadeIn>
-        <section
-          className="vex-team container  py-5  d-flex align-items-center"
-          id="sectionTeam"
-        >
-          <Team />
-        </section>
+      <FadeIn
+        id="sectionPrices"
+        className="vex-price-lists container py-5 d-flex align-items-center"
+      >
+        <PriceListList />
       </FadeIn>
     </Layout>
   );
 };
 
-const FadeIn = props => {
+const FadeIn = (props, { topOffset = 0 }) => {
   const sectionRef = useRef(null);
 
   function fadeIn() {
@@ -50,19 +48,26 @@ const FadeIn = props => {
   }
 
   return (
-    <Waypoint scrollableAncestor={window} onEnter={fadeIn} bottomOffset="25%">
-      <div
-        className=""
-        style={{
-          opacity: 0,
-          transform: "translateY(10rem)",
-          transition: "all 1000ms"
-        }}
-        ref={sectionRef}
+    <section id={props.id} className={props.className}>
+      <Waypoint
+        scrollableAncestor={window}
+        onEnter={fadeIn}
+        bottomOffset="25%"
+        topOffset={topOffset}
       >
-        {props.children}
-      </div>
-    </Waypoint>
+        <div
+          className=""
+          style={{
+            opacity: 0,
+            transform: "translateY(10rem)",
+            transition: "all 1000ms"
+          }}
+          ref={sectionRef}
+        >
+          {props.children}
+        </div>
+      </Waypoint>
+    </section>
   );
 };
 

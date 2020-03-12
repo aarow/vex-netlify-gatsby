@@ -38,19 +38,21 @@ export default props => {
   return (
     <div className="team-list--container ">
       <h2 className="text-center my-5">Your Vex Team</h2>
-      <ul className="team-list--list list-unstyled row">
-        {teamList.map(({ node: teamMember }) => (
-          <li
-            key={teamMember.id}
-            className="team-list--item col-lg-4 col-sm-6 mb-5"
-          >
-            <Modal
-              trigger={<TeamMember teamMember={teamMember} />}
-              content={<TeamMemberDetails teamMember={teamMember} />}
-            ></Modal>
-          </li>
-        ))}
-      </ul>
+      <div className="overflow-auto">
+        <ul className="team-list--list list-unstyled mb-n5">
+          {teamList.map(({ node: teamMember }) => (
+            <li
+              key={teamMember.id}
+              className="team-list--item col-lg-4 col-sm-6 mb-5 float-left"
+            >
+              <Modal
+                trigger={<TeamMember teamMember={teamMember} />}
+                content={<TeamMemberDetails teamMember={teamMember} />}
+              ></Modal>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
